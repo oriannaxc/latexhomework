@@ -1,0 +1,133 @@
+\documentclass{article}
+
+
+\usepackage{amsmath}%xrightarrow
+\usepackage{amsthm}%proof
+\usepackage{amssymb}%mathbb, geqslant
+\usepackage{enumerate}%item
+
+
+\begin{document}
+
+
+%\newtheorem{name}[count]{NAME}[section]
+\newtheorem{example}{EXAMPLE}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+
+
+\section{Basic definitions}%use "\section*{}" to hide number.
+
+ A continuous surjection $p : E \to B$ is called a (topological) \emph{branched covering} if there exists a nowhere denes set $\Delta \subset B$ such that  $p|p^{-1}(B\backslash\Delta):p^{-1}(B\backslash\Delta)\to B\backslash\Delta$ is a covering mapping.
+The set $B\backslash\Delta$ is called a \emph{regular set} of the branched covering $p$, whereas $\Delta$ its \emph{singular set} $\Delta (p)$ consisting of all points $b \in B$ which have no evenly covered neighbourhood.
+This set is always closed.
+\\
+Assume that $p:E \to B$ is a branched covering with singular set $\Delta$.
+We say that $p$ is \emph{without holes} when, for every $S \subset E$, the inclusion $\Delta \cap \overline{p(S)} \subset p(\overline(S))$ holds.
+On the other hand, if $p^{-1}(\Delta \cap \overline{p(S)}) \subset \overline{p^{-1}(p(S))}$ for every $S \subset E$ then we say that $p$ is \emph{without missing branches}.
+\begin{example}
+	Let $E = (([-1,0) \cup (0,1]) \times {1}) \cup ([-1.1] \times {0})$, $B = [-1,1]$ (we shall take the natural topologies in all cases unless otherwise stated) and $p(x,y) = x$. It is easy to see that $\Delta(p) = {0}$ and $p$ has a "hole" at $(0,1)$.
+\end{example}
+\begin{example}
+	Let $E = ({0} \times {1}) \cup ([-1,1] \times {0})$, $B = [-1,1]$ and $p(x,y) = x$. In this case $p$ has "missing branches". To see this, take $S = (0,1] \times {0}$.
+\end{example}
+\begin{example}
+	Every covering is a branched covering with $\Delta = \emptyset$. This is the reason why it is without holes and without missing branches.
+\end{example}
+\begin{definition}
+	Given a topological space $X$, a chart for $X$ is a homeomorphism $\varphi :V \to U$, where $V$ is an open subset of $\mathbb{C}^{n}$ for some $n$, and $U$ is an open subset of $X$. A holomorphic atlas for $X$ is a collection of charts $\varphi_{i}: V_{i} \to U_{i}$, with the $V_{i} \subseteq \mathbb{C}^{n}$ for some fixed $n$, such that:\\
+  \begin{enumerate}[(1)]
+    \item{the $U_{i}$ cover $X$;}
+    \item{for each $i \ne j$, the $\mathbf{transition \ map}$:
+    \begin{displaymath}
+      \varphi_{i,j}: \varphi^{-1}_{i}(U_{i} \cap U_{j}) \xrightarrow{\varphi_{i}} U_{i} \cap U_{j} \xrightarrow{\varphi_{j}^{-1}} \varphi_{j}^{-1}(U_i{} \cap U_{j})
+    \end{displaymath}
+    is holomorphic.}
+  \end{enumerate}
+
+
+\end{definition}
+A $\mathbf{complex \ mainfold}$ of dimension $n$ is a (Hausdorff, second countable) topological space $X$ together with a holomorphic atlas.
+\begin{proposition}
+	A complex mainfold $X$ is naturally oriented when considered as a topological manifold.
+\end{proposition}
+\begin{proof}[Sketch of proof.]
+  The complex numbers have a natural orientation, thich induces one on $\mathbb{C}^{n}$. Because holomorphic maps preserve this orientation, we get an induced orientation on any complex manifold.
+\end{proof}
+Using the atlas and the fact that we have a definition of holomorphic functions on open subsets of $\mathbb{C}^{n}$, we can define holomorphic functions on complex manifolds.
+\begin{definition}
+	Let $X$ be a complex manifold with atlas $\varphi_{i}:V_{i} \to U_{i}$, and $U \subseteq X$ open. A function $f:U \to \mathbb{C}$ is $\mathbf{holomorphic}$ is for each $i$, the composed function
+	\begin{displaymath}
+		f \circ \varphi_{i}:\varphi_{i}^{-1}(U \cap U_{i}) \to \mathbb{C}
+	\end{displaymath}
+	is holomorphic.
+\end{definition}
+This is equivalent to a definition which uses the atlas explicitly:
+\begin{definition}
+Given two holomorphic manifolds $X$ , $X^{'}$ with atlas $\{\varphi_{i}:V_{i}\to  U_{j}\}$ and $\{\varphi_{i}:V_{i}^{'}\to U_{i}^{'}\}$,a map $\varphi:X\to X^{'}$is a holomorphic if and only if for all $i$, $j$ the composed map
+\begin{displaymath}
+(\varphi^{'}_{j})^{-1} \circ \varphi\varphi_{i}:\varphi^{-1}_{i}(\varphi^{-1}(U^{'}_{j}\cap U_{i}))\to V^{'}_{j}
+\end{displaymath}
+is holomorphic.
+\end{definition}
+\begin{definition}
+Given a complex manifold $X$, and $U\subseteq X$ open, a function $f:U \to \mathbb{c}$ is holomorphic if and only if it gives a holomorphic mapping when $\mathbb{c}$ is considered as a complex manifold via the trivial atlas.
+\end{definition}
+\begin{definition}
+A $\mathbf{Riemann \ surface}$ is a complex manifold of dimension 1.
+\end{definition}
+\begin{definition}
+A $\mathbf{branched \ cover}$ (of the Riemann sphere) is a pair ($C$,$f$) when $C$ is a compact, connected Riemann surface, and $f:C\to \mathbb{CP}^{1} $ is a non-constant holomorphic map.
+\end{definition}
+\begin{definition}
+We say two branched covers $(C,f)$ and $(C^{'},f^{'})$ are $\mathbf{equivalent}$ if there is a biholomorphism $g:C\to C^{'}$ such that $f=f^{'} \circ g$.
+\end{definition}
+\begin{definition}
+If the $e_{P}$ from $Proposition 2.3$ is strictly greater than $1$, we say that $P$ is a $\mathbf{ramification \ point}$ of $f$, with $\mathbf{ramification \ index} \ e_{P}$. In this case, $f(P)$ is a $\mathbf{branch \ point}$
+of $f$. A neighborhood $U$ of $P$ such that there exist $U^{'},V,V^{'},g,g^{'}$ as in $Proposition 2.3$ is a $\mathbf{standard \ neighborhood}$ of $P$.
+\end{definition}
+\begin{corollary}
+Let $(C,f)$ be a branched cover. Then there are only finitely many ramification and branched points of $f$.
+\end{corollary}
+\begin{proof}
+  Given a neighborhood $U$ of a point $P \in C$ as in $Proposition 2.3$, we see that on $U$, the map $f$ is locally one-to-one everywhere except possibly at $P$, where it is locally $e_{P}$-to-one. By compactness of $C$, there is a finite open cover of $C$ by such neighborhoods, so we conclude that $f$ is locally one-to-one at all but finitely many points, and bence can be remified at only finitely many points. The statement on branch points follows.
+\end{proof}
+The following is a basic fact from complex analysis:
+\begin{proposition}
+  Suppose $(C,f)$ is a branched cover, and $P \in C$. Then there are open neighborhoods $U$, $U^{'}$ of $P$ and $f(P)$ respectively, and open neighborhoods $V$, $V^{'}$ of $0$ in $\mathbb{C}$, and biholomorphisms $g:U \to V$,$g^{'}:U^{'} \to V^{'}$ sending $P$ and $f(P)$ respectively to $0$, such that the map $g^{'} \circ f \circ g^{-1}:V \to V^{'}$ is equal to $z \mapsto z^{e_{P}}$ for some $e_{P} \geqslant 1$.
+\end{proposition}
+From the same basic fact from complex analysis in the proof of $Corollary 2.5$, we can get a strong version:
+\begin{lemma}\label{definition:2.6}
+  Given a branched cover$(C,f)$, and $Q \in \mathbb{CP}^{1}$, the fiber $f^{-1}(Q)$ is finite, and there exists a connected neighborhood $U^{'}$ of $Q$ such that every connected component of $f^{-1}(U^{'})$ contains a unique point $P \in f^{-1}(Q)$, surjects onto $U{'}$, and is a standard neighborhood of $P$.
+\end{lemma}
+\begin{proof}
+  $C$ is covered by finitely many standard neighborhoods by compactness, and on every standard neighborhood, $f$ if finite-to-one, so we conclude the finiteness of $f^{-1}(Q)$.
+  \\
+  we next observe that $f$ is a closed map, because $C$is compact and $\mathbb{CP}^{1}$ is Hausdorff, and alos an openmap, by the open mapping theorem in complex analysis (or more concretely, because the map $z \mapsto z^{e}$ is visibly open for any $e$). Then for any open subset $U^{'} \subseteq \mathbb{CP}^{1}$, the induced map $f^{-1}(U^{'} \to U^{'})$ is also open and closed. It follows that if $W \subseteq f^{-1}(U^{'})$ is a connected component, its image is open and closed in $U^{'}$, and hence is all of $U^{'}$ if $U^{'}$ is connected.
+  \\
+  Let $P_{1},...,P_{m}$ be the preimages of $Q$, and $U_{1},...,U_{m}$ be standard neighborhoods of $P_{1},...,P_{m}$. We may further suppose that they are chosen to be disjoint from one another. Each boundary $\partial U_{i}$ is then a closed set with $f(\partial U_{i})$ closed and not containing $Q$. We can then choose $U^{'}$ a connected neighborhood of $Q$ disjoint from all the $f(\partial U_{i})$. Let $U$ be a connected component of $f^{-1}(U^{'})$;
+  by the above, $U$ surjects onto $U^{'}$, so contains (at least) one of the $P_{i}$. To see that $U$ is a standard neighborhood and does not contain $P_{j}$ for $j \neq i$, it is enough to prove $U \subseteq U_{i}$. We have $U_{i} \cap f^{-1}(U^{'})$ and $\overline{U}_{i} \cap f^{-1}(U^{'})$ open and closed respectively in $f^{-1}(U^{'})$ by definition. But $\partial U_{i} \cap f^{-1}(U^{'}) = \emptyset$ by construction, so $U_{i} \cap f^{-1}(U^{'})=\overline{U}_{i} \ cap f^{-1}(U^{'})$ is also closed. Since $U \cap U_{i} \neq \emptyset$ and $U$ is connected, we conclude $U \subseteq U_{i}$, as desired.
+\end{proof}
+We now conclude:
+\begin{corollary}
+  Let$C,f$ be a branched cover. Then $f$ induces a (finite-degree) topological covering map after reomving the branch points and their preimages.
+\end{corollary}
+We also conclude the following result, which says that we can think of a branched cover as having degree $d$ even over the branch points, if we count with appropriate multiplicities.
+\begin{corollary}
+  If $(C,f)$ is a branched cover of degree $d$. then for any $Q \in \mathbb{CP}^{1}$, we have \begin{displaymath}
+    \sum_{P \in f^{-1}(Q)}e_{P}=d.
+\end{displaymath}
+\end{corollary}
+\begin{proof}
+  Take $Q^{'} \neq Q$ a point which lies in the neighborhood $U^{'}$ provided by Lemma~\ref{definition:2.6} (this is then necessarily not a branch point). Given $P \in f^{-1}(Q)$, if $U$ is the connected component of $f^{-1}(U^{'})$ containing $P$, then $Proposition 2.3$ implies that $Q^{'}$ has $e_{P}$ preimages ins $U$. We conclude that the number of points in $f^{-1}(Q^{'})$ is equal to $\sum_{p \in f^{-1}(Q)}e_{P}$. On the other hand, by $Proposition 2.7$, the number of points in $f^{-1}(Q^{'})$ is equal to $d$, giving the desired identity.
+\end{proof}
+This motivates the following definition:
+\begin{definition}
+  Given a branched cover
+\end{definition}
+\end{document}
+ 
